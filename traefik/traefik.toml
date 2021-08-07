@@ -23,3 +23,6 @@ watch = true
 email = "jochen.zehnder@gmail.com"
 storage = "/etc/traefik/acme.json"
 tlschallenge = true
+
+[log]
+level = "INFO"
