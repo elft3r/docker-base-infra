@@ -3,19 +3,15 @@ version: "3.9"
 services:
   traefik:
     image: "elft3r/swarm-traefik:latest"
-    container_name: "traefik"
     ports:
       - target: 80
         published: 80
-        protocol: tcp
         mode: ingress
       - target: 443
         published: 443
-        protocol: tcp
         mode: ingress
       - target: 8080
         published: 8080
-        protocol: tcp
         mode: ingress
     volumes:
       - type: bind
@@ -34,10 +30,12 @@ services:
       update_config:
         parallelism: 1
         delay: 10s
+        order: start-first
         failure_action: rollback
       rollback_config:
         parallelism: 1
         delay: 10s
+        order: start-first
       restart_policy:
         condition: on-failure
       labels:
