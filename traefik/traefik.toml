@@ -1,0 +1,25 @@
+[entryPoints]
+[entryPoints.http]
+address = ":80"
+[entryPoints.http.http.redirections]
+[entryPoints.http.http.redirections.entryPoint]
+to = "https"
+
+[entryPoints.https]
+address = ":443"
+
+[api]
+dashboard = true
+insecure = true
+
+[providers]
+[providers.docker]
+exposedByDefault = false
+[providers.file]
+directory = "/etc/traefik/files"
+watch = true
+
+[certificatesResolvers.letsencrypt.acme]
+email = "jochen.zehnder@gmail.com"
+storage = "/etc/traefik/acme.json"
+tlschallenge = true
