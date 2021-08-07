@@ -41,6 +41,8 @@ services:
         condition: on-failure
       labels:
           - traefik.enable=false
+    networks:
+      - traefik
 
 networks:
   traefik:
