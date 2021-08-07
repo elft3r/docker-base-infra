@@ -1,3 +1,5 @@
+version: "3.9"
+
 services:
   traefik:
     image: "elft3r/swarm-traefik:latest"
@@ -19,9 +21,6 @@ services:
       - type: bind
         source: /var/run/docker.sock
         target: /var/run/docker.sock
-      - type: volume
-        source: acme-json
-        target: "/etc/traefik/acme.json"
     healthcheck:
       test: "wget --no-verbose --tries=1 --spider http://localhost:8080/ping || exit 1"
       interval: 10s
@@ -48,6 +47,3 @@ networks:
   traefik:
     driver: overlay
     name: traefik
-
-volumes:
-  acme-json:
