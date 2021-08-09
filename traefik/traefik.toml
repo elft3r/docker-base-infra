@@ -15,6 +15,7 @@ insecure = true
 [providers]
 [providers.docker]
 exposedByDefault = false
+swarmMode = true
 [providers.file]
 directory = "/etc/traefik/files"
 watch = true
@@ -22,7 +23,8 @@ watch = true
 [certificatesResolvers.letsencrypt.acme]
 email = "jochen.zehnder@gmail.com"
 storage = "/etc/traefik/acme.json"
-tlschallenge = true
+[certificatesResolvers.letsencrypt.acme.httpChallenge]
+entryPoint = "http"
 
 [log]
 level = "INFO"
