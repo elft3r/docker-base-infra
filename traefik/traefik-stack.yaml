@@ -17,6 +17,9 @@ services:
       - type: bind
         source: /var/run/docker.sock
         target: /var/run/docker.sock
+      - type: volume
+        source: certs-vol
+        target: /certs
     # Disable for now, as the check fails with 'mode: ingress'
     # healthcheck:
     #   test: "wget --no-verbose --tries=1 --spider http://localhost:8080/ping || exit 1"
@@ -48,3 +51,6 @@ networks:
   traefik:
     driver: overlay
     name: traefik
+
+volumes:
+  certs-vol:
