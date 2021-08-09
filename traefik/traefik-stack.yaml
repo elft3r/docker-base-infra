@@ -20,11 +20,10 @@ services:
       - type: volume
         source: certs-vol
         target: /certs
-    # Disable for now, as the check fails with 'mode: ingress'
-    # healthcheck:
-    #   test: "wget --no-verbose --tries=1 --spider http://localhost:8080/ping || exit 1"
-    #   interval: 10s
-    #   timeout: 10s
+    healthcheck:
+      test: "wget --no-verbose --tries=1 --spider http://localhost:8080/ping || exit 1"
+      interval: 10s
+      timeout: 10s
     deploy:
       mode: replicated
       replicas: 1
