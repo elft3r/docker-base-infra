@@ -12,6 +12,8 @@ address = ":443"
 dashboard = true
 insecure = true
 
+[ping]
+
 [providers]
 [providers.docker]
 exposedByDefault = false
@@ -22,7 +24,7 @@ watch = true
 
 [certificatesResolvers.letsencrypt.acme]
 email = "jochen.zehnder@gmail.com"
-storage = "/etc/traefik/acme.json"
+storage = "/certs/acme.json"
 [certificatesResolvers.letsencrypt.acme.httpChallenge]
 entryPoint = "http"
 
