@@ -1,0 +1,18 @@
+---
+name: Deploy Monitoring Stack
+
+on:
+  push:
+    branches: [main]
+    paths: [monitoring/**, .github/workflows/monitoring-deploy.yml]
+
+jobs:
+  deploy:
+    name: Deploy Monitoring Stack
+    runs-on: self-hosted
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+      - name: Deploy Monitoring Stack
+        run: |
+          docker stack deploy -c monitoring/monitoring-stack.yml monitoring
