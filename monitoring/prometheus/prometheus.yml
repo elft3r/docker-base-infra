@@ -41,23 +41,32 @@ scrape_configs:
 
     # Override the global default and scrape targets from this job every 5 seconds.
     scrape_interval: 5s
+    dns_sd_configs:
+      - names: ['tasks.cadvisor']
+        type: 'A'
+        port: 8080
 
-    static_configs:
-      - targets: ['192.168.1.220:8080']
-      - targets: ['192.168.1.200:8080', '192.168.1.201:8080', '192.168.1.202:8080', '192.168.1.203:8080', '192.168.1.204:8080']
-        labels:
-          type: 'raspberry'
+    # static_configs:
+    #   - targets: ['192.168.1.220:8080']
+    #   - targets: ['192.168.1.200:8080', '192.168.1.201:8080', '192.168.1.202:8080', '192.168.1.203:8080', '192.168.1.204:8080']
+    #     labels:
+    #       type: 'raspberry'
 
   - job_name: 'node-exporter'
 
     # Override the global default and scrape targets from this job every 5 seconds.
     scrape_interval: 5s
 
-    static_configs:
-      - targets: ['192.168.1.220:9100']
-      - targets: ['192.168.1.200:9100', '192.168.1.201:9100', '192.168.1.202:9100', '192.168.1.204:9100', '192.168.1.204:9100']
-        labels:
-          type: 'raspberry'
+    dns_sd_configs:
+      - names: ['tasks.node-exporter']
+        type: 'A'
+        port: 9100
+
+    # static_configs:
+    #   - targets: ['192.168.1.220:9100']
+    #   - targets: ['192.168.1.200:9100', '192.168.1.201:9100', '192.168.1.202:9100', '192.168.1.204:9100', '192.168.1.204:9100']
+    #     labels:
+    #       type: 'raspberry'
 
   - job_name: 'synology'
 

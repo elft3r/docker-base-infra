@@ -84,9 +84,7 @@ services:
       - --collector.filesystem.ignored-mount-points
       - "^/(sys|proc|dev|host|etc|rootfs/var/lib/docker/containers|rootfs/var/lib/docker/overlay2|rootfs/run/docker/netns|rootfs/var/lib/docker/aufs)($$|/)"
     ports:
-      - target: 9100
-        published: 9100
-        mode: host
+      - 9100:9100
     deploy:
       mode: global
       restart_policy:
@@ -104,9 +102,7 @@ services:
       - /sys:/sys:ro
       - /var/lib/docker/:/var/lib/docker:ro
     ports:
-      - target: 8080
-        published: 8080
-        mode: host
+      - 8080:8080
     deploy:
       mode: global
       restart_policy:
