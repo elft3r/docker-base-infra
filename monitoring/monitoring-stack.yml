@@ -74,6 +74,7 @@ services:
 
   node-exporter:
     image: prom/node-exporter
+    hostname: '{{.Node.Hostname}}'
     volumes:
       - /proc:/host/proc:ro
       - /sys:/host/sys:ro
@@ -96,6 +97,7 @@ services:
 
   cadvisor:
     image: jmb12686/cadvisor:v1.37.5
+    hostname: '{{.Node.Hostname}}'
     volumes:
       - /:/rootfs:ro
       - /var/run:/var/run:rw
