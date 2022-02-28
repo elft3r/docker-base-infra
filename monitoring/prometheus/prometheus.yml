@@ -53,16 +53,6 @@ scrape_configs:
         type: 'A'
         port: 8080
 
-    relabel_configs:
-      - source_labels: [__meta_dns_name]
-        target_label: instance
-
-    # static_configs:
-    #   - targets: ['192.168.1.220:8080']
-    #   - targets: ['192.168.1.200:8080', '192.168.1.201:8080', '192.168.1.202:8080', '192.168.1.203:8080', '192.168.1.204:8080']
-    #     labels:
-    #       type: 'raspberry'
-
   - job_name: 'node-exporter'
 
     # Override the global default and scrape targets from this job every 5 seconds.
@@ -72,16 +62,6 @@ scrape_configs:
       - names: ['tasks.node-exporter']
         type: 'A'
         port: 9100
-
-    relabel_configs:
-      - source_labels: [__meta_dns_name]
-        target_label: instance
-
-    # static_configs:
-    #   - targets: ['192.168.1.220:9100']
-    #   - targets: ['192.168.1.200:9100', '192.168.1.201:9100', '192.168.1.202:9100', '192.168.1.204:9100', '192.168.1.204:9100']
-    #     labels:
-    #       type: 'raspberry'
 
   - job_name: 'synology'
 

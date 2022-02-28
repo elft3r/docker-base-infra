@@ -5,7 +5,7 @@ services:
     image: prom/prometheus:v2.33.4
     hostname: prometheus
     configs:
-      - source: prometheus_yml_v4
+      - source: prometheus_yml_v5
         target: /etc/prometheus/prometheus.yml
       - source: alert_rules_v0
         target: /etc/prometheus/alert.rules
@@ -115,7 +115,7 @@ services:
       - monitoring
 
 configs:
-  prometheus_yml_v4:
+  prometheus_yml_v5:
     file: ./prometheus/prometheus.yml
   alert_rules_v0:
     file: ./prometheus/alert.rules
