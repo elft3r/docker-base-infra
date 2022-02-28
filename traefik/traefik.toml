@@ -30,3 +30,6 @@ entryPoint = "http"
 
 [log]
 level = "INFO"
+
+[metrics]
+[metrics.prometheus]
