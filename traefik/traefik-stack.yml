@@ -46,11 +46,15 @@ services:
           - traefik.enable=false
     networks:
       - traefik
+      - monitoring
 
 networks:
   traefik:
     driver: overlay
     name: traefik
+  monitoring:
+    driver: overlay
+    name: monitoring
 
 volumes:
   certs-vol:

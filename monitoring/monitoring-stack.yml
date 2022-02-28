@@ -125,3 +125,4 @@ volumes:
 
 networks:
   monitoring:
+    external: true
